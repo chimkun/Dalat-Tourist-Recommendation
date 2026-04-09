@@ -12,37 +12,38 @@ DALAT_CENTER_LON = 108.448
 # Max distance in km for normalization (furthest attraction in dataset)
 MAX_DISTANCE_KM = 15.0
 
-# Known prices for famous attractions (osm_id prefix → price_level 0-4)
+# Known prices for famous attractions (name substring → price in VND)
+# Old 0-4 scale: 0=free, 1=50k, 2=150k, 3=350k, 4=600k
 KNOWN_PRICES: dict[str, int] = {
-    "Hang Nga": 2,
-    "Crazy House": 2,
-    "Valley of Love": 2,
-    "Thung Lũng Tình Yêu": 2,
-    "Dalat Market": 1,
-    "Chợ Đà Lạt": 1,
-    "Chợ đêm": 1,
-    "Datanla": 2,
-    "Thác Datanla": 2,
-    "Thác Prenn": 2,
-    "Prenn": 2,
-    "Railway Station": 1,
-    "Ga Đà Lạt": 1,
-    "Clay Tunnel": 2,
-    "Đường Hầm Đất": 2,
-    "Robin Hill": 1,
-    "Đồi Robin": 1,
-    "Coffee Plantation": 2,
-    "Cà Phê Mê Linh": 2,
-    "Mê Linh": 2,
-    "Poly": 1,
-    "Lang Biang": 1,
-    "Lâm Đồng": 1,
-    "Cáp treo": 2,
-    "Cable car": 2,
-    "Aquarium": 2,
-    "Thủy Cung": 2,
-    "Palace": 2,
-    "Dinh": 2,
+    "Hang Nga": 150000,
+    "Crazy House": 150000,
+    "Valley of Love": 350000,
+    "Thung Lũng Tình Yêu": 350000,
+    "Dalat Market": 50000,
+    "Chợ Đà Lạt": 50000,
+    "Chợ đêm": 50000,
+    "Datanla": 150000,
+    "Thác Datanla": 150000,
+    "Thác Prenn": 150000,
+    "Prenn": 150000,
+    "Railway Station": 50000,
+    "Ga Đà Lạt": 50000,
+    "Clay Tunnel": 150000,
+    "Đường Hầm Đất": 150000,
+    "Robin Hill": 50000,
+    "Đồi Robin": 50000,
+    "Coffee Plantation": 150000,
+    "Cà Phê Mê Linh": 150000,
+    "Mê Linh": 150000,
+    "Poly": 50000,
+    "Lang Biang": 50000,
+    "Lâm Đồng": 50000,
+    "Cáp treo": 150000,
+    "Cable car": 150000,
+    "Aquarium": 150000,
+    "Thủy Cung": 150000,
+    "Palace": 150000,
+    "Dinh": 150000,
 }
 
 # Estimated visiting time in minutes for known attractions
@@ -203,32 +204,32 @@ def _calc_weather_scores(props: dict) -> tuple[float, float]:
 
 
 def _estimate_price_level(props: dict, name: str) -> float:
-    """Estimate price level 0-4. Higher = more expensive."""
+    """Estimate price in VND. Returns 0 for free."""
     # Check known attractions
     for key, price in KNOWN_PRICES.items():
         if key.lower() in name.lower():
             return float(price)
 
-    # Type-based defaults
+    # Type-based defaults (in VND)
     tourism = props.get("tourism", "")
     leisure = props.get("leisure", "")
     amenity = props.get("amenity", "")
     historic = props.get("historic", "")
 
     if amenity == "marketplace":
-        return 1.0
+        return 50000.0
     if tourism == "museum":
-        return 2.0
+        return 150000.0
     if tourism == "attraction":
-        return 2.5
+        return 150000.0
     if leisure in ("park", "garden"):
-        return 0.5
+        return 10000.0
     if historic in ("monument", "memorial"):
-        return 0.0
+        return 0.0  # free
     if tourism == "viewpoint":
-        return 0.5
+        return 10000.0
     # Generic
-    return 1.0
+    return 10000.0
 
 
 def _parse_opening_hours(props: dict) -> dict:

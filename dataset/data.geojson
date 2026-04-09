@@ -23517,6 +23517,92 @@
         ]
       },
       "id": "node/13624635101"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.45,
+          11.94
+        ]
+      },
+      "properties": {
+        "@id": "node/decoy_001",
+        "name": "DalAT Test Museum",
+        "name:en": "DalAT Test Museum",
+        "tourism": "museum",
+        "building": "yes",
+        "type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.455,
+          11.945
+        ]
+      },
+      "properties": {
+        "@id": "node/decoy_002",
+        "name": "Decoy Park for Kids",
+        "name:en": "Decoy Park for Kids",
+        "leisure": "park",
+        "type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.46,
+          11.935
+        ]
+      },
+      "properties": {
+        "@id": "node/decoy_003",
+        "name": "Decoy Viewpoint",
+        "name:en": "Decoy Viewpoint",
+        "tourism": "viewpoint",
+        "type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.44,
+          11.93
+        ]
+      },
+      "properties": {
+        "@id": "node/decoy_004",
+        "name": "Decoy Waterfall",
+        "name:en": "Decoy Waterfall",
+        "waterway": "waterfall",
+        "type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.465,
+          11.95
+        ]
+      },
+      "properties": {
+        "@id": "node/decoy_005",
+        "name": "Decoy Free Market",
+        "name:en": "Decoy Free Market",
+        "amenity": "marketplace",
+        "type": "node"
+      }
     }
   ]
 }

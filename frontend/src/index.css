@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest-dark: #1A4D2E;
+  --color-forest-mid: #2D6A4F;
+  --color-forest-light: #52B788;
+  --color-mint: #95D5B2;
+  --color-mint-pale: #D8F3DC;
+  --color-cream: #F5EEE0;
+  --color-white: #FFFFFF;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: linear-gradient(160deg, rgba(26,77,46,0.4) 0%, rgba(45,106,79,0.5) 30%, rgba(82,183,136,0.5) 60%, rgba(149,213,178,0.5) 100%), #F0FDF4;
+  min-height: 100vh;
+  width: 100%;
+  color: #1A4D2E;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #D8F3DC;
+}
+::-webkit-scrollbar-thumb {
+  background: #52B788;
+  border-radius: 3px;
+}
+
+/* ─── Leaflet overrides ──────────────────────────────── */
+.leaflet-container {
+  font-family: var(--font-sans);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(26, 77, 46, 0.15);
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 0.75rem;
+  border: 1px solid #D8F3DC;
+}
+.leaflet-popup-content {
+  margin: 0.75rem 1rem;
+}
+
+/* ─── Range input ────────────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: linear-gradient(to right, #52B788, #95D5B2);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 3px solid #2D6A4F;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.15s;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 3px solid #2D6A4F;
+  cursor: pointer;
+}
+
+/* ─── Select ────────────────────────────────────────── */
+select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%232D6A4F' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ─── Animations ─────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}

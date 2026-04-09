@@ -55,7 +55,7 @@ class Recommender:
         weather: str,
         has_kids: bool,
         kid_count: int = 1,
-        budget: str = "medium",
+        budget: float = 200000.0,
         time_available: float = 2.0,
         category: str = "all",
         max_distance_km: Optional[float] = None,
@@ -119,13 +119,10 @@ class Recommender:
             P[FEATURE_KEYS.index("f_kid_score")] = 0.0
 
         # --- Budget preferences ---
-        budget_idx = FEATURE_KEYS.index("f_price_level")
-        if budget == "low":
-            P[budget_idx] = -1.0  # prefer low prices
-        elif budget == "high":
-            P[budget_idx] = 1.0  # price is not a filter for high budget
-        else:  # medium
-            P[budget_idx] = 0.0  # neutral
+        # Budget is now the user's max price in VND (hard filter already applied).
+        # We keep the price feature neutral in the preference vector.
+        # budget_idx = FEATURE_KEYS.index("f_price_level")
+        # P[budget_idx] = 0.0  # neutral — hard filter handles it
 
         # --- Time availability ---
         # Close-late venues better for short visits, opens-early for long days
@@ -166,7 +163,7 @@ class Recommender:
         weather: str = "sunny",
         has_kids: bool = False,
         kid_count: int = 1,
-        budget: str = "medium",
+        budget: float = 200000.0,
         time_available: float = 2.0,
         category: str = "all",
         max_distance_km: Optional[float] = None,
@@ -174,13 +171,13 @@ class Recommender:
     ) -> list[dict]:
         """
         Main recommendation method. Returns a ranked list of attraction dicts.
+
+        budget: max price in VND the user is willing to pay.
+        price_level in metadata is already in VND.
         """
-        # Hard filter by price — skip entries that don't match budget
-        # Low budget: price must be <= 1
-        # Medium budget: price must be <= 3
-        # High budget: no upper limit (but penalize free/very cheap)
-        price_upper = {"low": 1.0, "medium": 3.0, "high": 99.0}.get(budget, 99.0)
-        price_lower = {"low": 0.0, "medium": 0.0, "high": 0.0}.get(budget, 0.0)
+        # price_upper is the user's max budget in VND
+        price_upper = budget
+        # price_lower is 0 (no minimum)
 
         # Max distance filter (km)
         max_dist = max_distance_km if max_distance_km is not None else 20.0
@@ -201,15 +198,20 @@ class Recommender:
         for i in range(self.n_attractions):
             meta = self.meta[i]
 
-            # Hard filter: price must be within budget range
-            price = meta.get("price_level", 1.0)
-            if price < price_lower or price > price_upper:
+            # Hard filter: price must be within budget (price_lower=0, price_upper=budget in VND)
+            price = meta.get("price_level", 10000.0)
+            if price > price_upper:
                 continue  # HARD SKIP
 
             # Hard filter: distance
             dist = meta.get("distance_km", 0.0)
             if dist > max_dist:
                 continue  # HARD SKIP
+
+            # Hard filter: category must match requested category
+            if category and category != "all":
+                if meta.get("category") != category:
+                    continue  # HARD SKIP
 
             filtered_indices.append(i)
 

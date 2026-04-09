@@ -24,7 +24,7 @@ class RecommendRequest(BaseModel):
     weather: str = Field(default="sunny", pattern="^(sunny|rainy|cloudy)$")
     has_kids: bool = Field(default=False)
     kid_count: int = Field(default=1, ge=1, le=5)
-    budget: str = Field(default="medium", pattern="^(low|medium|high)$")
+    budget: float = Field(default=200000, ge=0, le=1000000)
     time_available: float = Field(default=2.0, ge=0.5, le=12.0)
     category: str = Field(default="all")
     max_distance_km: Optional[float] = Field(default=None, ge=1.0, le=50.0)

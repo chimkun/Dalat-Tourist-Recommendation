@@ -44,9 +44,19 @@ def build_feature_matrix(enriched_data: list[dict]) -> tuple[np.ndarray, list[st
     osm_ids = []
     meta = []
 
+    # Find max price for normalization
+    all_prices = [item.get("price_level", 0.0) for item in enriched_data]
+    max_price = max(all_prices) if all_prices else 1.0
+    if max_price == 0:
+        max_price = 1.0
+
     for i, item in enumerate(enriched_data):
         for j, key in enumerate(FEATURE_KEYS):
-            X[i, j] = item.get(key, 0.0)
+            val = item.get(key, 0.0)
+            # Normalize price_level to [0, 1]
+            if key == "f_price_level":
+                val = val / max_price
+            X[i, j] = val
         osm_ids.append(item["@id"])
         meta.append(item)
 
