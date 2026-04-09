@@ -25,10 +25,10 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: linear-gradient(160deg, rgba(26,77,46,0.4) 0%, rgba(45,106,79,0.5) 30%, rgba(82,183,136,0.5) 60%, rgba(149,213,178,0.5) 100%), #F0FDF4;
+  background: linear-gradient(160deg, rgba(10,40,20,0.85) 0%, rgba(20,65,45,0.85) 30%, rgba(40,100,70,0.85) 60%, rgba(60,130,90,0.85) 100%), #1A3D2A;
   min-height: 100vh;
   width: 100%;
-  color: #1A4D2E;
+  color: #D8F3DC;
 }
 
 /* ─── Scrollbar ─────────────────────────────────────── */
@@ -36,7 +36,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #D8F3DC;
+  background: #1A3D2A;
 }
 ::-webkit-scrollbar-thumb {
   background: #52B788;
@@ -51,7 +51,7 @@ body {
 }
 .leaflet-popup-content-wrapper {
   border-radius: 0.75rem;
-  border: 1px solid #D8F3DC;
+  border: 1px solid rgba(82,183,136,0.3);
 }
 .leaflet-popup-content {
   margin: 0.75rem 1rem;

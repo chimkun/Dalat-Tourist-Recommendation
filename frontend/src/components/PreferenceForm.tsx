@@ -62,7 +62,7 @@ export default function PreferenceForm({ filters, onSearch, onClear, loading }: 
 
       {/* ─── Row 1: Weather ─── */}
       <div style={{ paddingTop: 80, paddingBottom: 80 }}>
-        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 20 }}>
+        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 18, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 20 }}>
           Weather Condition
         </div>
         <div style={{ display: 'flex', gap: 20 }}>
@@ -97,7 +97,7 @@ export default function PreferenceForm({ filters, onSearch, onClear, loading }: 
 
       {/* ─── Row 2: Kids ─── */}
       <div style={{ paddingBottom: 80 }}>
-        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 20 }}>
+        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 18, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 20 }}>
           Traveling with Children?
         </div>
         <div style={{ display: 'flex', gap: 20 }}>
@@ -141,7 +141,7 @@ export default function PreferenceForm({ filters, onSearch, onClear, loading }: 
       {/* ─── Row 3: Kid Count ─── */}
       {local.has_kids && (
         <div style={{ paddingBottom: 80 }}>
-          <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 20 }}>
+          <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 18, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 20 }}>
             How Many Children?
           </div>
           <div style={{ display: 'flex', gap: 16 }}>
@@ -172,7 +172,7 @@ export default function PreferenceForm({ filters, onSearch, onClear, loading }: 
 
       {/* ─── Row 4: Budget (drag slider) ─── */}
       <div style={{ paddingBottom: 80 }}>
-        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 20 }}>
+        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 18, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 20 }}>
           Budget Level
         </div>
         <div style={{ padding: '28px 24px', borderRadius: 20, background: 'rgba(255,255,255,0.08)', border: '2px solid rgba(255,255,255,0.15)' }}>
@@ -211,8 +211,8 @@ export default function PreferenceForm({ filters, onSearch, onClear, loading }: 
 
       {/* ─── Row 5: Time ─── */}
       <div style={{ paddingBottom: 80 }}>
-        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 20 }}>
-          Time Available: <span style={{ color: '#fff', fontWeight: 400, letterSpacing: 0, textTransform: 'none', fontSize: 11 }}>{local.time_available}h</span>
+        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 18, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 20 }}>
+          Time Available: <span style={{ color: '#fff', fontWeight: 400, letterSpacing: 0, textTransform: 'none', fontSize: 18 }}>{local.time_available}h</span>
         </div>
         <div style={{ padding: '28px 24px', borderRadius: 20, background: 'rgba(255,255,255,0.08)', border: '2px solid rgba(255,255,255,0.15)' }}>
           <input
@@ -235,7 +235,7 @@ export default function PreferenceForm({ filters, onSearch, onClear, loading }: 
 
       {/* ─── Row 6: Category ─── */}
       <div style={{ paddingBottom: 80 }}>
-        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 20 }}>
+        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 18, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 20 }}>
           Category
         </div>
         <select
