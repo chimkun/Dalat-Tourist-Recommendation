@@ -1,9 +1,0 @@
-Total features: 178
-Unique names: 177
-Duplicate names: 1
-
-Duplicate names (one per line for delete.txt):
-x2: Ga Đà Lạt
-
-Lines below for delete.txt:
-Ga Đà Lạt
